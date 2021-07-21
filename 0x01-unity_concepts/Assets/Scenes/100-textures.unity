@@ -428,6 +428,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7559060247970393156, guid: b1184fc3ae8bb6c45890d291c4b5b019, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f6a989b4f3d31834ab848484443f5096, type: 2}
     - target: {fileID: 7559060247970393158, guid: b1184fc3ae8bb6c45890d291c4b5b019, type: 3}
       propertyPath: m_Name
       value: Textured Ball
