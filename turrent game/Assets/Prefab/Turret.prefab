@@ -133,8 +133,8 @@ MonoBehaviour:
   range: 15
   fireRate: 1
   fireCountDown: 0
-  bulletPrefab: {fileID: 0}
-  firePoint: {fileID: 0}
+  bulletPrefab: {fileID: 5724817094151314331, guid: 4038879e4eb1294438c2fd2f31a0456a, type: 3}
+  firePoint: {fileID: 7514734368848319208, guid: 73bfb4f1f2ccd184a9f3775f5109d0ad, type: 3}
 --- !u!1 &4294182640889879769
 GameObject:
   m_ObjectHideFlags: 0
