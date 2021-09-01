@@ -5,7 +5,8 @@ public class Node : MonoBehaviour
 	public Color hoverColor = Color.gray;
 	private Color startColor;
 	private Renderer rend;
-	private GameObject turrentAlreadyExist = null;
+	private GameObject turrentExist = null;
+	private Vector3 offset = new Vector3(0, 0.5f, 0);
 
 	private void Start()
 	{
@@ -25,11 +26,13 @@ public class Node : MonoBehaviour
 
 	private void OnMouseDown()
 	{
-		if (turrentAlreadyExist)
+		if (turrentExist)
 		{
 			Debug.Log("we cant build there !!");
 			return;
 		}
 		// build turrent
+		GameObject turrentToBuild = BuildManager.instance.TurrentToBuild;
+		turrentExist = Instantiate(turrentToBuild, transform.position, transform.rotation).gameObject;
 	}
 }

@@ -36,7 +36,6 @@ public class Bullet : MonoBehaviour
 			// move the bullet to the target
 			transform.Translate(dir.normalized * distanceThisFrame, Space.World);
 		}
-		Debug.Log($"{target}");
 	}
 
 	private void HitTarget()

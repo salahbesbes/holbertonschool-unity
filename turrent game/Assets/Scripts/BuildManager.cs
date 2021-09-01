@@ -2,10 +2,31 @@ using UnityEngine;
 
 public class BuildManager : MonoBehaviour
 {
-	private GameObject turrentToBuild;
 
-	public GameObject getTurrentToBuild()
+	public static BuildManager instance;
+
+
+	private void Awake()
 	{
-		return turrentToBuild;
+		if (instance == null) instance = this;
+		else
+		{
+			Debug.Log("more than build manager in seane");
+		}
+	}
+
+
+	public GameObject defaultTurrent;
+
+
+	private void Start()
+	{
+		_turrentToBuild = defaultTurrent;
+
+	}
+	private GameObject _turrentToBuild;
+	public GameObject TurrentToBuild
+	{
+		get => _turrentToBuild;
 	}
 }
