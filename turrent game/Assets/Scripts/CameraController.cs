@@ -10,19 +10,19 @@ public class CameraController : MonoBehaviour
 
 	private void Update()
 	{
-		if (Input.GetKey("z") || Input.mousePosition.y >= Screen.height - borderThikness)
+		if (Input.GetKey("z"))
 		{
 			transform.Translate(Vector3.forward * panSpeed * Time.deltaTime, Space.World);
 		}
-		if (Input.GetKey("s") || Input.mousePosition.y <= borderThikness)
+		if (Input.GetKey("s"))
 		{
 			transform.Translate(Vector3.back * panSpeed * Time.deltaTime, Space.World);
 		}
-		if (Input.GetKey("d") || Input.mousePosition.x >= Screen.width - borderThikness)
+		if (Input.GetKey("d"))
 		{
 			transform.Translate(Vector3.right * panSpeed * Time.deltaTime, Space.World);
 		}
-		if (Input.GetKey("q") || Input.mousePosition.x <= borderThikness)
+		if (Input.GetKey("q"))
 		{
 			transform.Translate(Vector3.left * panSpeed * Time.deltaTime, Space.World);
 		}
@@ -31,7 +31,7 @@ public class CameraController : MonoBehaviour
 
 		float scroll = Input.GetAxis("Mouse ScrollWheel");
 		Vector3 pos = transform.position;
-		pos.y -= scroll * scrollSpeed * Time.deltaTime * 1000;
+		pos.y -= scroll * scrollSpeed * Time.deltaTime * 500;
 		pos.y = Mathf.Clamp(pos.y, minY, maxY);
 		transform.position = pos;
 
