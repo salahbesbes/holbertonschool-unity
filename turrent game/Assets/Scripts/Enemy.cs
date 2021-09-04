@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
 		// move the enemy to some new destination
 		transform.Translate(speed * Time.fixedDeltaTime * dir.normalized, Space.World);
 		// just before we get to the target we want calculate the new target
-		if (Vector3.Distance(transform.position, currentTarget.position) <= 0.1f)
+		if (Vector3.Distance(transform.position, currentTarget.position) <= 0.2f)
 		{
 			GetNextTarget();
 		}

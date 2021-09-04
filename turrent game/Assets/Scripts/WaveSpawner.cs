@@ -29,16 +29,17 @@ public class WaveSpawner : MonoBehaviour
 	// this methode is independent from the update methode it has its own time counter
 	private IEnumerator SpawnWave()
 	{
+		float timeBetweenEnemies = 0.25f;
 		waveIndex++;
 		// time to spend to spawn all enemyin a wave + 0.5 (safe time to avoid lags)
-		double timeNeededToSpawnNextWave = 0.5 * waveIndex + 0.5;
+		float timeNeededToSpawnNextWave = timeBetweenEnemies * waveIndex + 0.5f;
 		// update timeBetweenWaves to fixed time 5 sec (even with large waves of enemies)
-		timeBetweenWaves = 5 + (float)timeNeededToSpawnNextWave;
+		timeBetweenWaves = 5 + timeNeededToSpawnNextWave;
 		for (int i = 0; i < waveIndex; i++)
 		{
 			SpawnEnemy();
-			// spend 0.5 sec to spawn 1 enemy in a wave
-			yield return new WaitForSeconds(0.5f);
+			// spend 0.25 sec to spawn 1 enemy in a wave
+			yield return new WaitForSeconds(timeBetweenEnemies);
 		}
 	}
 

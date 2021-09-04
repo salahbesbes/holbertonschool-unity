@@ -48,7 +48,7 @@ MonoBehaviour:
   turnSpeed: 30
   partToRotate: {fileID: 1222425451117642701}
   range: 30
-  fireRate: 1
+  fireRate: 3
   fireCountDown: 0
   bulletPrefab: {fileID: 8129588686781810027, guid: 271a81dff2d45f64aac7734786af74cf, type: 3}
   firePoint: {fileID: 1043115536217495096}
@@ -113,7 +113,6 @@ MeshRenderer:
   m_Materials:
   - {fileID: 2100000, guid: 9ad5b9c1800fe7b44b77f6f4c63e33af, type: 2}
   - {fileID: 2100000, guid: afb02f024d87dda40baa99e465c8411d, type: 2}
-  - {fileID: 2100000, guid: 6484fe41c1fa1cc41a5040f132a2481f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
