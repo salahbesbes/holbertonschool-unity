@@ -2481,6 +2481,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1984856379870124044, guid: d6c15dbe4e1785f42bc355278c9ad73a, type: 3}
+      propertyPath: m_PixelPerfect
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5570289002107022501, guid: d6c15dbe4e1785f42bc355278c9ad73a, type: 3}
       propertyPath: m_Name
       value: TimerCanvas
