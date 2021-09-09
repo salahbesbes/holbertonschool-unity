@@ -8,34 +8,30 @@ public class PlayerController : MonoBehaviour
 	public float maxJumpHeight = 20f;
 	private bool isJumping = false;
 	private bool isGrounded = true;
+
 	// Update is called once per frame
 	private float gravity = -9.8F;
+
 	private Vector3 moveDirection = Vector3.zero;
 
-	public Transform GameCamera;
-
 	//public float jumpVelocity = 0.5f;
+
 	private void Start()
 	{
 		charCon = GetComponent<CharacterController>();
-	}
-
-
-	private void Update()
-	{
-
 	}
 
 	private void OnTriggerEnter(Collider other)
 	{
 		if (other.tag == "DethEnd")
 		{
+			Timer timer = transform.GetComponent<Timer>();
+			GlobalControl.Instance.currentTimer = timer.currentTime;
 			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 		}
-
 	}
 
-	void FixedUpdate()
+	private void FixedUpdate()
 	{
 		isGrounded = charCon.isGrounded;
 		if (isGrounded)
@@ -45,11 +41,9 @@ public class PlayerController : MonoBehaviour
 			moveDirection *= speed;
 			if (Input.GetButton("Jump"))
 				moveDirection.y = Mathf.Sqrt(maxJumpHeight * -3.0f * gravity);
-
 		}
 		// apply Gravity all frames
 		moveDirection.y += gravity * Time.fixedDeltaTime * 4;
-
 
 		charCon.Move(moveDirection * Time.fixedDeltaTime);
 
@@ -78,6 +72,4 @@ public class PlayerController : MonoBehaviour
 		charCon.Move(moveDirection * Time.deltaTime);
 		*/
 	}
-
-
 }
