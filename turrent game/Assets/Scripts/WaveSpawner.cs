@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,7 +22,8 @@ public class WaveSpawner : MonoBehaviour
 		// reduce countDown by 1 sec every frame
 		countDown -= Time.deltaTime;
 		// update the canvas UI
-		waveCountDownText.text = Math.Round(countDown).ToString();
+		countDown = Mathf.Clamp(countDown, 0, Mathf.Infinity);
+		waveCountDownText.text = $"{countDown,0:00.0}";
 	}
 
 	// this methode is independent from the update methode it has its own time counter

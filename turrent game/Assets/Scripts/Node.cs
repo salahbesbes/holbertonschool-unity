@@ -6,9 +6,12 @@ public class Node : MonoBehaviour
 	public Color hoverColor = Color.gray;
 	private Color startColor;
 	private Renderer rend;
-	private GameObject turrentExist = null;
-	private Vector3 offset = new Vector3(0, 0.5f, 0);
+	public Vector3 offset = new Vector3(0, 0.5f, 0);
 	BuildManager buildManager;
+	public Color notEnoughMoneyColor;
+
+	[Header("Optional")]
+	public GameObject turrent = null;
 	private void Start()
 	{
 		rend = GetComponent<Renderer>();
@@ -21,11 +24,11 @@ public class Node : MonoBehaviour
 		// check if we are hovering into a UI element
 		if (EventSystem.current.IsPointerOverGameObject()) return;
 		// check if we are selectiong a turrent
-		if (buildManager.TurrentToBuild == null) return;
-
+		if (!buildManager.CanBuild) return;
 
 		// hover animation activate only if we are selecting a turrent
-		rend.material.color = hoverColor;
+		if (buildManager.HasMoney) rend.material.color = hoverColor;
+		else rend.material.color = notEnoughMoneyColor;
 
 	}
 
@@ -33,25 +36,23 @@ public class Node : MonoBehaviour
 	{
 		rend.material.color = startColor;
 	}
-
 	private void OnMouseDown()
 	{
 		// check if we are hovering into a UI element
 		if (EventSystem.current.IsPointerOverGameObject()) return;
 
 		// if we click on node without selecting a turrent dont do any thing
-		if (buildManager.TurrentToBuild == null) return;
+		if (!buildManager.CanBuild) return;
 
 
 		// if we select urrent and want to build on top some other turrent
-		if (turrentExist)
+		if (turrent)
 		{
 			Debug.Log("we cant build there !!");
 			return;
 		}
 
-		// build turrent
-		GameObject turrentToBuild = buildManager.TurrentToBuild;
-		turrentExist = Instantiate(turrentToBuild, transform.position, transform.rotation).gameObject;
+		//// build turrent
+		buildManager.BuildTurrentOn(this);
 	}
 }
