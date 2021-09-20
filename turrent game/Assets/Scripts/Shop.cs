@@ -2,11 +2,7 @@ using UnityEngine;
 
 public class Shop : MonoBehaviour
 {
-	BuildManager buildManager;
-	void Awake()
-	{
-		buildManager = BuildManager.instance;
-	}
+	private BuildManager buildManager;
 
 
 	public TurrentBluePrint standardTurrent;
@@ -14,17 +10,26 @@ public class Shop : MonoBehaviour
 
 
 
-
-	public void selectStandardTurrent()
+	void Awake()
 	{
-		Debug.Log("standard turrent Selected");
-		buildManager.TurrentToBuild = buildManager.defaultTurrent;
+		buildManager = BuildManager.instance;
 	}
 
-	public void selecteMissileLancherTurrent()
+
+
+
+
+
+	public void SelectStandardTurrent()
+	{
+		Debug.Log("standard turrent Selected");
+		buildManager.TurrentToBuild = standardTurrent;
+	}
+
+	public void SelecteMissileLancherTurrent()
 	{
 		Debug.Log("MissileLancher turrent Selected");
-		buildManager.TurrentToBuild = buildManager.anOtherTurrent;
+		buildManager.TurrentToBuild = missileLuncher;
 
 
 	}

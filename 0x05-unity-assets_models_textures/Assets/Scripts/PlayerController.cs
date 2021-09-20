@@ -5,7 +5,7 @@ public class PlayerController : MonoBehaviour
 {
 	public CharacterController charCon;
 	public float speed = 6f;
-	public float maxJumpHeight = 20f;
+	public float maxJumpHeight = 10f;
 	private bool isJumping = false;
 	private bool isGrounded = true;
 
@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
 
 	private void FixedUpdate()
 	{
+		/*
 		isGrounded = charCon.isGrounded;
 		if (isGrounded)
 		{
@@ -46,9 +47,10 @@ public class PlayerController : MonoBehaviour
 		moveDirection.y += gravity * Time.fixedDeltaTime * 4;
 
 		charCon.Move(moveDirection * Time.fixedDeltaTime);
+		*/
 
-		/*
 		isGrounded = charCon.isGrounded;
+		Debug.Log($"isGrounded {isGrounded}");
 		if (isGrounded && moveDirection.y < 0)
 		{
 			moveDirection.y = 0f;
@@ -70,6 +72,5 @@ public class PlayerController : MonoBehaviour
 
 		moveDirection.y += gravity * Time.deltaTime;
 		charCon.Move(moveDirection * Time.deltaTime);
-		*/
 	}
 }
