@@ -2,9 +2,6 @@ using UnityEngine;
 
 public class TimerTrigger : MonoBehaviour
 {
-	private void Start()
-	{
-	}
 
 	private void OnTriggerExit(Collider other)
 	{
