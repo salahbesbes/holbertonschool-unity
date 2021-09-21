@@ -25,15 +25,6 @@ public class PlayerController : MonoBehaviour
                 startPosition = transform.position;
         }
 
-        private void OnTriggerEnter(Collider other)
-        {
-                if (other.tag == "DethEnd")
-                {
-                        // note this line will not work !! why
-                        //transform.position = new Vector3(0.0f, 10.0f, 0.0f);
-                }
-        }
-
         private void Update()
         {
                 if (Input.GetKeyUp(KeyCode.Escape))
@@ -74,10 +65,24 @@ public class PlayerController : MonoBehaviour
                 gravityVelocity.y += gravity * Time.deltaTime;
                 charCon.Move(gravityVelocity * Time.deltaTime);
 
-                // note why this code work properly but does not work in OnTriggerEnter method
+                // this is in the update Methode of the PlayerController Component, this code work
+                // properly but the same code does not work in OnTriggerEnter method
                 if (transform.position.y < -30.0f)
                 {
                         transform.position = startPosition + new Vector3(0f, 10f, 0f);
+                }
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+                // "other" is a plane Object situated under the Platform that dedect the player when
+                // it falls
+                if (other.tag == "DethEnd")
+                {
+                        Debug.Log("this print  get exuted properly as expected");
+
+                        // note this line will not work !! why?? => it does not reset the player position and dont show any console error
+                        //transform.position = new Vector3(0.0f, 10.0f, 0.0f);
                 }
         }
 }
