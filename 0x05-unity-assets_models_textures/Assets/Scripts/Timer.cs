@@ -10,11 +10,10 @@ public class Timer : MonoBehaviour
 	private bool runTimer = false;
 	private bool finished = false;
 
-	private void Start()
-	{
-		// when this object spawn it gets the last counter found in the globalControl class
-		currentTime = GlobalControl.Instance.currentTimer;
-	}
+
+
+
+
 
 	private void Update()
 	{
@@ -24,8 +23,10 @@ public class Timer : MonoBehaviour
 		{
 			currentTime += Time.deltaTime;
 		}
+
+		// every frame print the current counter in the global Control
+		printTimer(currentTime);
 		// always updating the counter to the globalContral classs which is not destroyable
-		GlobalControl.Instance.currentTimer = currentTime;
 	}
 
 	public void StartTimer()
@@ -38,4 +39,15 @@ public class Timer : MonoBehaviour
 		runTimer = false;
 		finished = true;
 	}
+
+
+	public void printTimer(float currentTime)
+	{
+		float sec = currentTime % 60;
+		float min = (currentTime / 60) % 60;
+		float h = currentTime / 3600;
+
+		TimerText.text = $"{h,0:00}:{min,0:00}.{sec,0:00}";
+	}
+
 }

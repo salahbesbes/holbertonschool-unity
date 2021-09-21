@@ -1,76 +1,66 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
 	public CharacterController charCon;
+
 	public float speed = 6f;
 	public float maxJumpHeight = 10f;
-	private bool isJumping = false;
 	private bool isGrounded = true;
+	private Vector3 startPosition;
 
 	// Update is called once per frame
-	private float gravity = -9.8F;
+	private float gravity = -9.8f * 2;
 
-	private Vector3 moveDirection = Vector3.zero;
+	private Vector3 gravityVelocity = Vector3.zero;
 
 	//public float jumpVelocity = 0.5f;
 
 	private void Start()
 	{
+		// make sure the time scale when the player is rendred is 1
+		Time.timeScale = 1;
 		charCon = GetComponent<CharacterController>();
+		startPosition = transform.position;
 	}
 
 	private void OnTriggerEnter(Collider other)
 	{
 		if (other.tag == "DethEnd")
 		{
-			Timer timer = transform.GetComponent<Timer>();
-			GlobalControl.Instance.currentTimer = timer.currentTime;
-			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+			// note this line will not work !! why
+			//transform.position = new Vector3(0.0f, 10.0f, 0.0f);
 		}
 	}
 
-	private void FixedUpdate()
+	private void Update()
 	{
-		/*
 		isGrounded = charCon.isGrounded;
-		if (isGrounded)
-		{
-			moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-			moveDirection = transform.TransformDirection(moveDirection);
-			moveDirection *= speed;
-			if (Input.GetButton("Jump"))
-				moveDirection.y = Mathf.Sqrt(maxJumpHeight * -3.0f * gravity);
-		}
-		// apply Gravity all frames
-		moveDirection.y += gravity * Time.fixedDeltaTime * 4;
 
-		charCon.Move(moveDirection * Time.fixedDeltaTime);
-		*/
-
-		isGrounded = charCon.isGrounded;
-		Debug.Log($"isGrounded {isGrounded}");
-		if (isGrounded && moveDirection.y < 0)
+		if (isGrounded && gravityVelocity.y < 0)
 		{
-			moveDirection.y = 0f;
+			gravityVelocity.y = -2f;
 		}
 
-		Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-		charCon.Move(move * Time.deltaTime * speed);
+		float x = Input.GetAxis("Horizontal");
+		float z = Input.GetAxis("Vertical");
 
-		//if (move != Vector3.zero)
-		//{
-		//	gameObject.transform.forward = move;
-		//}
+		// handle movement
+		Vector3 direction = transform.right * x + transform.forward * z;
+		charCon.Move(direction * speed * Time.deltaTime);
 
-		// Changes the height position of the player..
+		//handle jump
 		if (Input.GetButtonDown("Jump") && isGrounded)
 		{
-			moveDirection.y += Mathf.Sqrt(maxJumpHeight * -3.0f * gravity);
+			gravityVelocity.y = Mathf.Sqrt(maxJumpHeight * -3.0f * gravity);
 		}
-
-		moveDirection.y += gravity * Time.deltaTime;
-		charCon.Move(moveDirection * Time.deltaTime);
+		//handle gravity
+		gravityVelocity.y += gravity * Time.deltaTime;
+		charCon.Move(gravityVelocity * Time.deltaTime);
+		// note why this code work properly but does not work in OnTriggerEnter method
+		if (transform.position.y < -30.0f)
+		{
+			transform.position = startPosition + new Vector3(0f, 10f, 0f);
+		}
 	}
 }
