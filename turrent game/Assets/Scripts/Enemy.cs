@@ -11,8 +11,9 @@ public class Enemy : MonoBehaviour
 	{
 		currentTarget = WayPoints.points[0];
 	}
-	// after we move the gameObject in the fixedupdate methode the camera detect
-	// new position in the update methode 
+
+	// after we move the gameObject in the fixedupdate methode the camera detect new position in
+	// the update methode
 	private void FixedUpdate()
 	{
 		// get the V3 direction destination
@@ -33,10 +34,16 @@ public class Enemy : MonoBehaviour
 
 		if (currentWayPointIndex >= WayPoints.points.Length)
 		{
+			EndPath();
 			Destroy(gameObject);
 			return;
 		}
 		// get the next target Transform
 		currentTarget = WayPoints.points[currentWayPointIndex];
+	}
+
+	private void EndPath()
+	{
+		PlayerStats.Lives--;
 	}
 }
