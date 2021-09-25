@@ -34,7 +34,7 @@ public class WaveSpawner : MonoBehaviour
 		// time to spend to spawn all enemyin a wave + 0.5 (safe time to avoid lags)
 		float timeNeededToSpawnNextWave = timeBetweenEnemies * waveIndex + 0.5f;
 		// update timeBetweenWaves to fixed time 5 sec (even with large waves of enemies)
-		timeBetweenWaves = 5 + timeNeededToSpawnNextWave;
+		timeBetweenWaves = timeBetweenWaves + timeNeededToSpawnNextWave;
 		for (int i = 0; i < waveIndex; i++)
 		{
 			SpawnEnemy();

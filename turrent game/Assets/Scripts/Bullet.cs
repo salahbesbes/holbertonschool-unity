@@ -4,9 +4,9 @@ public class Bullet : MonoBehaviour
 {
 	private Transform target;
 	public float speed = 15f;
-
 	public GameObject impactEffect;
 	public float explosionRadius;
+	public int damage = 50;
 
 	// setting the target of the bullet (which is sent by the turrent)
 	public void Seek(Transform _target)
@@ -41,8 +41,6 @@ public class Bullet : MonoBehaviour
 
 	private void HitTarget()
 	{
-
-
 		if (explosionRadius > 0f)
 		{
 			// damage all Enemies in a range
@@ -77,7 +75,8 @@ public class Bullet : MonoBehaviour
 
 	private void DamageEnemy(Transform enemy)
 	{
-		Destroy(enemy.gameObject);
+		Enemy enemyGO = enemy.GetComponent<Enemy>();
+		if (enemyGO) enemyGO.takeDamage(damage);
 	}
 
 	private void OnDrawGizmosSelected()

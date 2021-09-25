@@ -3,9 +3,11 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
 	public float speed = 5f;
-
+	public GameObject DethEffect;
 	private Transform currentTarget;
 	private int currentWayPointIndex = 0;
+	public int health = 100;
+	public int Reward { get; private set; } = 50;
 
 	private void Start()
 	{
@@ -45,5 +47,24 @@ public class Enemy : MonoBehaviour
 	private void EndPath()
 	{
 		PlayerStats.Lives--;
+	}
+
+	public void takeDamage(int amoutDamage)
+	{
+		health -= amoutDamage;
+		if (health <= 0) die();
+	}
+
+	private void die()
+	{
+		GiveReward();
+		GameObject dethEff = Instantiate(DethEffect, transform.position, Quaternion.identity).gameObject;
+		Destroy(dethEff, 5f);
+		Destroy(gameObject);
+	}
+
+	private void GiveReward()
+	{
+		PlayerStats.Money += Reward;
 	}
 }

@@ -108,4 +108,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 718938097e9ae3d47a93709d02ba087f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 50
+  speed: 10
+  DethEffect: {fileID: 3725523522432259811, guid: 865abe201ec5b4a4d9a5891014dd4e23, type: 3}
+  health: 100

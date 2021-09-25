@@ -4,21 +4,14 @@ public class Shop : MonoBehaviour
 {
 	private BuildManager buildManager;
 
-
 	public TurrentBluePrint standardTurrent;
 	public TurrentBluePrint missileLuncher;
+	public TurrentBluePrint lazerBeamer;
 
-
-
-	void Awake()
+	private void Awake()
 	{
 		buildManager = BuildManager.instance;
 	}
-
-
-
-
-
 
 	public void SelectStandardTurrent()
 	{
@@ -30,7 +23,11 @@ public class Shop : MonoBehaviour
 	{
 		Debug.Log("MissileLancher turrent Selected");
 		buildManager.TurrentToBuild = missileLuncher;
+	}
 
-
+	public void SelectLazerBeamer()
+	{
+		Debug.Log("SelectLazerBeamer  Selected");
+		buildManager.TurrentToBuild = lazerBeamer;
 	}
 }
