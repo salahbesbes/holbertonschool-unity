@@ -186,14 +186,13 @@ GameObject:
   - component: {fileID: 3356365962298386779}
   - component: {fileID: 3356365962298386780}
   - component: {fileID: 3356365962298386781}
-  - component: {fileID: 3356365962298386777}
   m_Layer: 5
   m_Name: WinCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3356365962298386778
 RectTransform:
   m_ObjectHideFlags: 0
@@ -279,18 +278,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &3356365962298386777
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3356365962298386782}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4be67906376ae73478bad15fdeed2d5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5546498428232881586
 GameObject:
   m_ObjectHideFlags: 0
@@ -458,6 +445,7 @@ GameObject:
   - component: {fileID: 2327566807243811309}
   - component: {fileID: 9203532416717166938}
   - component: {fileID: 3517719869345786595}
+  - component: {fileID: 5357674048182828088}
   m_Layer: 5
   m_Name: NextButton
   m_TagString: Untagged
@@ -566,7 +554,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 9203532416717166938}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5357674048182828088}
+        m_TargetAssemblyTypeName: WinMenu, Assembly-CSharp
+        m_MethodName: Next
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5357674048182828088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6267653425286001749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4be67906376ae73478bad15fdeed2d5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7828809411554353833
 GameObject:
   m_ObjectHideFlags: 0
@@ -658,6 +670,7 @@ GameObject:
   - component: {fileID: 746274310752999854}
   - component: {fileID: 6782821335376312235}
   - component: {fileID: 2190031374158578789}
+  - component: {fileID: 8278013004688460610}
   m_Layer: 5
   m_Name: MenuButton
   m_TagString: Untagged
@@ -766,7 +779,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6782821335376312235}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8278013004688460610}
+        m_TargetAssemblyTypeName: WinMenu, Assembly-CSharp
+        m_MethodName: MainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8278013004688460610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7945695227192425995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4be67906376ae73478bad15fdeed2d5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8160091554329867857
 GameObject:
   m_ObjectHideFlags: 0
