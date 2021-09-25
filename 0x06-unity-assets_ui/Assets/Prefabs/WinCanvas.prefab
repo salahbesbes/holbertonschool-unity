@@ -268,7 +268,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3356365962298386778
 RectTransform:
   m_ObjectHideFlags: 0
@@ -508,7 +508,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 450827cf47918a645b799bbefe45f354, type: 3}
+    m_Font: {fileID: 12800000, guid: d2cdc114f9707204b8adb668561d3b14, type: 3}
     m_FontSize: 60
     m_FontStyle: 0
     m_BestFit: 0
@@ -520,7 +520,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: YOU WIN!
+  m_Text: YOU WIN!dddd
 --- !u!1 &6267653425286001749
 GameObject:
   m_ObjectHideFlags: 0
