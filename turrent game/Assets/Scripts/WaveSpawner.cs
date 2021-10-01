@@ -31,6 +31,8 @@ public class WaveSpawner : MonoBehaviour
 	{
 		float timeBetweenEnemies = 0.25f;
 		waveIndex++;
+		// update the player stats round variable
+		PlayerStats.Rounds++;
 		// time to spend to spawn all enemyin a wave + 0.5 (safe time to avoid lags)
 		float timeNeededToSpawnNextWave = timeBetweenEnemies * waveIndex + 0.5f;
 		// update timeBetweenWaves to fixed time 5 sec (even with large waves of enemies)

@@ -2,11 +2,16 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-	private bool gameEnded = false;
+	// static variable carrie the values even when we reload the scene thats why we initialize
+	// it in the start methode
+	public static bool GameIsOver { get; private set; }
+
+	public GameObject gameOverUi;
 
 	// Start is called before the first frame update
 	private void Start()
 	{
+		GameIsOver = false;
 	}
 
 	// Update is called once per frame
@@ -14,14 +19,14 @@ public class GameManager : MonoBehaviour
 	{
 		if (PlayerStats.Lives <= 0)
 		{
-			if (gameEnded == true) return;
+			if (GameIsOver == true) return;
 			GameEnd();
 		}
 	}
 
 	private void GameEnd()
 	{
-		gameEnded = true;
-		Debug.Log("Game Ended");
+		GameIsOver = true;
+		gameOverUi.SetActive(true);
 	}
 }

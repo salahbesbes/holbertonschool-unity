@@ -8,10 +8,12 @@ public class Turrent : MonoBehaviour
 	[Header("Use Lazer")]
 	public bool UseLazer = false;
 
+	public float slowPercent = 0.5f;
+	public int damageOverTime = 30;
 	public ParticleSystem lazerEffect;
 	public LineRenderer lineRend;
 	public Light lightPoint;
-
+	private Enemy enemy;
 	private Transform target;
 	private string enemyTag = "Enemy";
 
@@ -57,6 +59,7 @@ public class Turrent : MonoBehaviour
 		if (nearestEnemy != null && shortestDistance <= range)
 		{
 			target = nearestEnemy.transform;
+			enemy = target.GetComponent<Enemy>();
 		}
 		else
 		{
@@ -106,6 +109,9 @@ public class Turrent : MonoBehaviour
 
 	private void Lazer()
 	{
+		// do damage and slow fires each sec (not each frame) but the function executs each frame
+		doDamage();
+		slowEnemy();
 		// enabling the lazer from firepoint to the target
 		if (lineRend.enabled == false)
 		{
@@ -123,6 +129,16 @@ public class Turrent : MonoBehaviour
 		Vector3 dir = firePoint.position - target.position;
 		lazerEffect.transform.position = target.position + dir.normalized;
 		lazerEffect.transform.rotation = Quaternion.LookRotation(dir);
+	}
+
+	private void slowEnemy()
+	{
+		enemy.Slow(slowPercent);
+	}
+
+	private void doDamage()
+	{
+		enemy.takeDamage(damageOverTime * Time.deltaTime);
 	}
 
 	private void ShootToTarger()

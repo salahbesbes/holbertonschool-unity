@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 623405575362842847}
   - component: {fileID: 3091982561184530408}
   - component: {fileID: 3897626126997654289}
+  - component: {fileID: 3483268301643080351}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -109,5 +110,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  DethEffect: {fileID: 3725523522432259811, guid: 865abe201ec5b4a4d9a5891014dd4e23, type: 3}
   health: 100
+  DethEffect: {fileID: 3725523522432259811, guid: 865abe201ec5b4a4d9a5891014dd4e23, type: 3}
+--- !u!114 &3483268301643080351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6525119176977210657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8e31ccba317d674794659bc31b8fd31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
