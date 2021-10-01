@@ -256,6 +256,7 @@ GameObject:
   - component: {fileID: 223173369}
   - component: {fileID: 223173371}
   - component: {fileID: 223173370}
+  - component: {fileID: 223173372}
   m_Layer: 5
   m_Name: StateText
   m_TagString: Untagged
@@ -324,6 +325,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 223173368}
   m_CullTransparentMesh: 1
+--- !u!114 &223173372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223173368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38495b1536f1a8d4eb34142dd9410e17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &263956887
 GameObject:
   m_ObjectHideFlags: 0
@@ -724,7 +737,7 @@ GameObject:
   - component: {fileID: 579755626}
   - component: {fileID: 579755628}
   - component: {fileID: 579755627}
-  - component: {fileID: 579755630}
+  - component: {fileID: 579755629}
   m_Layer: 5
   m_Name: healthtext
   m_TagString: Untagged
@@ -793,7 +806,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 579755625}
   m_CullTransparentMesh: 1
---- !u!114 &579755630
+--- !u!114 &579755629
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1251,7 +1264,7 @@ GameObject:
   - component: {fileID: 1236390081}
   - component: {fileID: 1236390080}
   m_Layer: 5
-  m_Name: CanvasButton
+  m_Name: CanvasButtonDebbug
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1744,7 +1757,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 867901691e42ce349a18718e00fc10fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shpereUi: {fileID: 579755630}
+  shpereUi: {fileID: 579755629}
   healthBar: {fileID: 444517}
   ButtonDamage: {fileID: 849222434}
   ButtonHeal: {fileID: 1157615793}
@@ -1762,6 +1775,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 145b846d694ca2640a9a120c1f21294e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stateObserverText: {fileID: 223173372}
 --- !u!1001 &1938929515
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1945,7 +1959,7 @@ GameObject:
   - component: {fileID: 2098756696}
   - component: {fileID: 2098756695}
   m_Layer: 5
-  m_Name: HealthDisplay
+  m_Name: HealthDisplayCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
