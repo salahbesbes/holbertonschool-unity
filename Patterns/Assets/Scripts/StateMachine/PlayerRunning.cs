@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class PlayerRunning : AnyState
 {
-	PlayerController PC;
-	Color InitColor;
+	private PlayerController PC;
+	private Color InitColor;
 
 	public float Counter { get; private set; }
 
@@ -14,21 +14,15 @@ public class PlayerRunning : AnyState
 		PC.speed = 20;
 		InitColor = playerContext.GetComponent<Renderer>().material.color;
 		playerContext.GetComponent<Renderer>().material.color = Color.green;
-
-
 	}
 
 	public override void Update(PlayerStateManager playerContext)
 	{
-
-
-
 		Counter += Time.deltaTime;
 
 		// this is the condition to switch to an other state
 		if (Counter % 60 >= 4f)
 		{
-
 			// this is the only way to change the current state
 			playerContext.SwitchState(playerContext.PlayerFloat);
 		}
@@ -39,5 +33,4 @@ public class PlayerRunning : AnyState
 	public override void OnCollisionEnter(PlayerStateManager playerContext)
 	{
 	}
-
 }

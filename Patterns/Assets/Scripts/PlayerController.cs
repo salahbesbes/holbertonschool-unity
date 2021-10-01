@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		GetComponent<PlayerStatus>().HealPlayer(5);
+		//GetComponent<PlayerStatus>().HealPlayer(5);
 	}
 
 	private void Update()
@@ -60,9 +60,7 @@ public class PlayerController : MonoBehaviour
 		//}
 	}
 
-
 	private void OnCollisionEnter(Collision collision)
 	{
-
 	}
 }
