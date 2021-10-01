@@ -109,3 +109,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  DethEffect: {fileID: 3725523522432259811, guid: 865abe201ec5b4a4d9a5891014dd4e23, type: 3}
+  health: 100

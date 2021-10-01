@@ -4,12 +4,13 @@ using UnityEngine.UI;
 public class MoneyUI : MonoBehaviour
 {
 	private Text textUi;
-	void Start()
+
+	private void Start()
 	{
 		textUi = transform.GetComponent<Text>();
 	}
 
-	void Update()
+	private void Update()
 	{
 		textUi.text = $"$ {PlayerStats.Money}";
 	}

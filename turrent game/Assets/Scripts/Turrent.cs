@@ -2,6 +2,16 @@ using UnityEngine;
 
 public class Turrent : MonoBehaviour
 {
+	[Header("General")]
+	public float range = 15f;
+
+	[Header("Use Lazer")]
+	public bool UseLazer = false;
+
+	public ParticleSystem lazerEffect;
+	public LineRenderer lineRend;
+	public Light lightPoint;
+
 	private Transform target;
 	private string enemyTag = "Enemy";
 
@@ -11,9 +21,9 @@ public class Turrent : MonoBehaviour
 	public Transform partToRotate;
 
 	[Header("Attribute")]
-	public float range = 150f;
-
+	[Header("Use Bullet (default)")]
 	public float fireRate = 1f;
+
 	public float fireCountDown = 0f;
 	public Transform bulletPrefab;
 	public Transform firePoint;
@@ -60,25 +70,59 @@ public class Turrent : MonoBehaviour
 	// Update is called once per frame
 	private void Update()
 	{
-		if (target == null) return;
-
-		// handle rotation on axe Y
-		Vector3 dir = target.position - transform.position;
-		Quaternion lookRotation = Quaternion.LookRotation(dir);
-		// smooth the rotation of the turrent
-		Vector3 rotation = Quaternion.Lerp(partToRotate.rotation,
-						lookRotation,
-						Time.deltaTime * turnSpeed
-						)
-						.eulerAngles;
-		partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
-
-		if (fireCountDown <= 0)
+		if (target == null)
 		{
-			ShootToTarger();
-			fireCountDown = 1f / fireRate;
+			// we want to stop the lazer if we are using it
+			if (UseLazer)
+			{
+				if (lineRend.enabled)
+				{
+					// disable the lineRendrer
+					lineRend.enabled = false;
+					// stop the particule effect
+					lazerEffect.Stop();
+					// stop the light point
+					lightPoint.enabled = false;
+				}
+			}
+			return;
+		}
+		LockOnTarger();
+
+		if (UseLazer == true)
+		{
+			Lazer();
+		}
+		else
+		{
+			if (fireCountDown <= 0)
+			{
+				ShootToTarger();
+				fireCountDown = 1f / fireRate;
+			}
 		}
 		fireCountDown -= Time.deltaTime;
+	}
+
+	private void Lazer()
+	{
+		// enabling the lazer from firepoint to the target
+		if (lineRend.enabled == false)
+		{
+			// enable the lazer
+			lineRend.enabled = true;
+			// start the particule effect
+			lazerEffect.Play();
+			// enable the lignt point
+			lightPoint.enabled = true;
+		}
+		lineRend.SetPosition(0, firePoint.position);
+		lineRend.SetPosition(1, target.position);
+
+		// update the lazer effect position and rotation
+		Vector3 dir = firePoint.position - target.position;
+		lazerEffect.transform.position = target.position + dir.normalized;
+		lazerEffect.transform.rotation = Quaternion.LookRotation(dir);
 	}
 
 	private void ShootToTarger()
@@ -100,5 +144,19 @@ public class Turrent : MonoBehaviour
 	{
 		Gizmos.color = Color.red;
 		Gizmos.DrawWireSphere(transform.position, range);
+	}
+
+	private void LockOnTarger()
+	{
+		// handle rotation on axe Y
+		Vector3 dir = target.position - transform.position;
+		Quaternion lookRotation = Quaternion.LookRotation(dir);
+		// smooth the rotation of the turrent
+		Vector3 rotation = Quaternion.Lerp(partToRotate.rotation,
+						lookRotation,
+						Time.deltaTime * turnSpeed
+						)
+						.eulerAngles;
+		partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
 	}
 }
