@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour
 
 		float x = Input.GetAxis("Horizontal");
 		float z = Input.GetAxis("Vertical");
+		Debug.Log($"z = {z}");
 
 		// handle movement
 		Vector3 direction = transform.right * x + transform.forward * z;
