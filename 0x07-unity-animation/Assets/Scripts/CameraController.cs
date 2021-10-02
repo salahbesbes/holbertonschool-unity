@@ -25,8 +25,8 @@ public class CameraController : MonoBehaviour
 		//player.Rotate(Vector3.up * mouseX);
 
 		// to rotate only the camera on the Y axes
-		rotation = isInverted ? rotation + mouseY : rotation - mouseY;
-		rotationY += mouseX;
+		//rotation = isInverted ? rotation + mouseY : rotation - mouseY;
+		//rotationY += mouseX;
 		transform.position = player.position + offset;
 		rotation = Mathf.Clamp(rotation, -90f, 90f);
 		rotationY = Mathf.Clamp(rotationY, -90f, 90f);
