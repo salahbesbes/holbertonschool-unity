@@ -28,6 +28,7 @@ public class AnimationScript : MonoBehaviour
 		if (walkingButton && !isJumping)
 		{
 			animator.SetBool(isWalkingHash, true);
+			animator.SetBool(isJumpingHash, false);
 		}
 		if (isWalking)
 		{
@@ -36,23 +37,44 @@ public class AnimationScript : MonoBehaviour
 			if (stopWalking)
 			{
 				animator.SetBool(isWalkingHash, false);
+				animator.SetBool(isJumpingHash, false);
 			}
 
 
-			if (isJumping)
+			if (jumpingButton)
 			{
 				animator.SetBool(isWalkingHash, false);
 				animator.SetBool(isJumpingHash, true);
 			}
 		}
 
+		if (isJumping)
+		{
+			if (isGrounded)
+			{
+				if (walkingButton)
+				{
+					animator.SetBool(isWalkingHash, true);
+					animator.SetBool(isJumpingHash, false);
+				}
+				else
+				{
+
+					animator.SetBool(isWalkingHash, false);
+					animator.SetBool(isJumpingHash, false);
+
+				}
+			}
+
+		}
 
 
-		if (isGrounded)
+		if (isWalking)
 		{
 			animator.SetBool(isJumpingHash, false);
 
 		}
+
 
 		if (jumpingButton)
 		{
