@@ -4,25 +4,28 @@ public class AnimationScript : MonoBehaviour
 {
 	private Animator animator;
 	private int isWalkingHash;
-	private int isRunningHash;
-
+	private int isJumpingHash;
+	private CharacterController charCon;
 	private void Start()
 	{
 		animator = GetComponent<Animator>();
 		isWalkingHash = Animator.StringToHash("isWalking");
-		isRunningHash = Animator.StringToHash("isRunning");
+		isJumpingHash = Animator.StringToHash("isJumping");
+		charCon = GetComponent<CharacterController>();
+
 	}
 
 	private void Update()
 	{
 		bool walkingButton = Mathf.Abs(Input.GetAxis("Vertical")) > 0;
-
+		bool jumpingButton = Input.GetKey(KeyCode.Space);
+		bool isGrounded = charCon.isGrounded;
 		Debug.Log($"walking {walkingButton}");
 		bool stopWalking = !walkingButton;
 		bool isWalking = animator.GetBool(isWalkingHash);
-		bool isRunning = animator.GetBool(isRunningHash);
+		bool isJumping = animator.GetBool(isJumpingHash);
 
-		if (walkingButton)
+		if (walkingButton && !isJumping)
 		{
 			animator.SetBool(isWalkingHash, true);
 		}
@@ -34,6 +37,26 @@ public class AnimationScript : MonoBehaviour
 			{
 				animator.SetBool(isWalkingHash, false);
 			}
+
+
+			if (isJumping)
+			{
+				animator.SetBool(isWalkingHash, false);
+				animator.SetBool(isJumpingHash, true);
+			}
+		}
+
+
+
+		if (isGrounded)
+		{
+			animator.SetBool(isJumpingHash, false);
+
+		}
+
+		if (jumpingButton)
+		{
+			animator.SetBool(isJumpingHash, true);
 		}
 	}
 }
