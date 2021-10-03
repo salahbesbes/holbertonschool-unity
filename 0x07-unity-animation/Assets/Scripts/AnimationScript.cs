@@ -3,16 +3,19 @@ using UnityEngine;
 public class AnimationScript : MonoBehaviour
 {
 	private Animator animator;
-	private int isWalkingHash;
-	private int isJumpingHash;
+	private int isWalkingHash, isJumpingHash, isFallingHash;
 	private CharacterController charCon;
+	private float lastY;
+	public float FallingThreshold = -0.1f;
+
 	private void Start()
 	{
 		animator = GetComponent<Animator>();
 		isWalkingHash = Animator.StringToHash("isWalking");
 		isJumpingHash = Animator.StringToHash("isJumping");
+		isFallingHash = Animator.StringToHash("isFalling");
 		charCon = GetComponent<CharacterController>();
-
+		lastY = transform.position.y;
 	}
 
 	private void Update()
@@ -20,20 +23,36 @@ public class AnimationScript : MonoBehaviour
 		bool walkingButton = Mathf.Abs(Input.GetAxis("Vertical")) > 0;
 		bool jumpingButton = Input.GetKey(KeyCode.Space);
 		bool isGrounded = charCon.isGrounded;
-		Debug.Log($"walking {walkingButton}");
+		bool isNotGrounded = !isGrounded;
 		bool stopWalking = !walkingButton;
 		bool isWalking = animator.GetBool(isWalkingHash);
 		bool isJumping = animator.GetBool(isJumpingHash);
+		bool isfalling = animator.GetBool(isFallingHash);
+		float distancePerSecondSinceLastFrame = (transform.position.y - lastY) * Time.deltaTime;
+		lastY = transform.position.y;  //set for next frame
 
 		if (walkingButton && !isJumping)
 		{
 			animator.SetBool(isWalkingHash, true);
 			animator.SetBool(isJumpingHash, false);
 		}
+
+
+		if (jumpingButton)
+		{
+			animator.SetBool(isWalkingHash, false);
+			animator.SetBool(isJumpingHash, true);
+		}
 		if (isWalking)
 		{
-			// while walking we are pressing 'z' so stop "stopWalking" is false so if we
-			// releaze the 'z' key stopWalking is true
+
+			if (distancePerSecondSinceLastFrame < 0 && transform.position.y < 0)
+			{
+				animator.SetBool(isFallingHash, true);
+			}
+
+			animator.SetBool(isJumpingHash, false);
+
 			if (stopWalking)
 			{
 				animator.SetBool(isWalkingHash, false);
@@ -41,11 +60,6 @@ public class AnimationScript : MonoBehaviour
 			}
 
 
-			if (jumpingButton)
-			{
-				animator.SetBool(isWalkingHash, false);
-				animator.SetBool(isJumpingHash, true);
-			}
 		}
 
 		if (isJumping)
@@ -66,19 +80,18 @@ public class AnimationScript : MonoBehaviour
 				}
 			}
 
+			if (distancePerSecondSinceLastFrame < 0 && transform.position.y < 0)
+			{
+				animator.SetBool(isFallingHash, true);
+			}
+
 		}
 
-
-		if (isWalking)
+		if (isGrounded)
 		{
-			animator.SetBool(isJumpingHash, false);
-
+			animator.SetBool(isFallingHash, false);
 		}
 
 
-		if (jumpingButton)
-		{
-			animator.SetBool(isJumpingHash, true);
-		}
 	}
 }

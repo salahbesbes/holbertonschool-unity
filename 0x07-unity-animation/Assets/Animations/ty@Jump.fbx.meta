@@ -6,6 +6,9 @@ ModelImporter:
   - first:
       74: -203655887218126122
     second: Jump
+  - first:
+      74: -433964048210091259
+    second: Jump (1)
   externalObjects: {}
   materials:
     materialImportMode: 2
