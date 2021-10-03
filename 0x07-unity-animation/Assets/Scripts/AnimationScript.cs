@@ -13,7 +13,6 @@ public class AnimationScript : MonoBehaviour
 		isWalkingHash = Animator.StringToHash("isWalking");
 		isJumpingHash = Animator.StringToHash("isJumping");
 		isFallingHash = Animator.StringToHash("isFalling");
-		beforeImpactHash = Animator.StringToHash("beforeImpact");
 		charCon = GetComponent<CharacterController>();
 		lastY = transform.position.y;
 	}
@@ -28,7 +27,6 @@ public class AnimationScript : MonoBehaviour
 		bool isWalking = animator.GetBool(isWalkingHash);
 		bool isJumping = animator.GetBool(isJumpingHash);
 		bool isfalling = animator.GetBool(isFallingHash);
-		bool isFlat = animator.GetBool(beforeImpactHash);
 		float distancePerSecondSinceLastFrame = (transform.position.y - lastY) * Time.deltaTime;
 		lastY = transform.position.y;  //set for next frame
 
