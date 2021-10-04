@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.47884, g: 0.8001845, b: 0.90072787, a: 1}
+  m_IndirectSpecularColor: {r: 0.478863, g: 0.80019236, b: 0.90065247, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1030,6 +1030,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d4760591772a174fb6d6f717499736f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1877814449 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7748303414591405161, guid: e4990440693542e418056a1f104fb9f4, type: 3}
+  m_PrefabInstance: {fileID: 7748303414374467041}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1877814450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1877814449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d4760591772a174fb6d6f717499736f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1979067125
 GameObject:
   m_ObjectHideFlags: 0
@@ -1421,6 +1438,22 @@ PrefabInstance:
     - target: {fileID: 7748303414591405161, guid: e4990440693542e418056a1f104fb9f4, type: 3}
       propertyPath: m_Name
       value: ExitButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 7748303414591405163, guid: e4990440693542e418056a1f104fb9f4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7748303414591405163, guid: e4990440693542e418056a1f104fb9f4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7748303414591405163, guid: e4990440693542e418056a1f104fb9f4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4202740110900216800, guid: e4990440693542e418056a1f104fb9f4, type: 3}
+    - target: {fileID: 7748303414591405163, guid: e4990440693542e418056a1f104fb9f4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4990440693542e418056a1f104fb9f4, type: 3}

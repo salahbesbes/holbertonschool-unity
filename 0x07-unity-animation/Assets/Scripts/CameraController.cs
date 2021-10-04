@@ -11,6 +11,8 @@ public class CameraController : MonoBehaviour
 	private void Start()
 	{
 		offset = transform.position - player.position;
+
+		Cursor.lockState = CursorLockMode.Confined;
 	}
 
 	private void LateUpdate()
@@ -24,9 +26,9 @@ public class CameraController : MonoBehaviour
 
 		//player.Rotate(Vector3.up * mouseX);
 
-		// to rotate only the camera on the Y axes
-		//rotation = isInverted ? rotation + mouseY : rotation - mouseY;
-		//rotationY += mouseX;
+		//to rotate only the camera on the Y axes
+		rotation = isInverted ? rotation + mouseY : rotation - mouseY;
+		rotationY += mouseX;
 		transform.position = player.position + offset;
 		rotation = Mathf.Clamp(rotation, -90f, 90f);
 		rotationY = Mathf.Clamp(rotationY, -90f, 90f);
