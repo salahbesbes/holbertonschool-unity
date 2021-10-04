@@ -3,37 +3,93 @@ using UnityEngine;
 public class AnimationScript : MonoBehaviour
 {
 	private Animator animator;
-	private int isWalkingHash;
-	private int isRunningHash;
+	private int isWalkingHash, isJumpingHash, isFallingHash, beforeImpactHash;
+	private CharacterController charCon;
+	private float lastY;
 
 	private void Start()
 	{
 		animator = GetComponent<Animator>();
 		isWalkingHash = Animator.StringToHash("isWalking");
-		isRunningHash = Animator.StringToHash("isRunning");
+		isJumpingHash = Animator.StringToHash("isJumping");
+		isFallingHash = Animator.StringToHash("isFalling");
+		charCon = GetComponent<CharacterController>();
+		lastY = transform.position.y;
 	}
 
 	private void Update()
 	{
 		bool walkingButton = Mathf.Abs(Input.GetAxis("Vertical")) > 0;
-
-		Debug.Log($"walking {walkingButton}");
+		bool jumpingButton = Input.GetKey(KeyCode.Space);
+		bool isGrounded = charCon.isGrounded;
+		bool isNotGrounded = !isGrounded;
 		bool stopWalking = !walkingButton;
 		bool isWalking = animator.GetBool(isWalkingHash);
-		bool isRunning = animator.GetBool(isRunningHash);
+		bool isJumping = animator.GetBool(isJumpingHash);
+		bool isfalling = animator.GetBool(isFallingHash);
+		float distancePerSecondSinceLastFrame = (transform.position.y - lastY) * Time.deltaTime;
+		lastY = transform.position.y;  //set for next frame
 
-		if (walkingButton)
+		if (walkingButton && !isJumping)
 		{
 			animator.SetBool(isWalkingHash, true);
+			animator.SetBool(isJumpingHash, false);
+		}
+
+
+		if (jumpingButton)
+		{
+			animator.SetBool(isWalkingHash, false);
+			animator.SetBool(isJumpingHash, true);
 		}
 		if (isWalking)
 		{
-			// while walking we are pressing 'z' so stop "stopWalking" is false so if we
-			// releaze the 'z' key stopWalking is true
+
+			if (distancePerSecondSinceLastFrame < 0 && transform.position.y < 0)
+			{
+				animator.SetBool(isFallingHash, true);
+			}
+
+			animator.SetBool(isJumpingHash, false);
+
 			if (stopWalking)
 			{
 				animator.SetBool(isWalkingHash, false);
+				animator.SetBool(isJumpingHash, false);
 			}
+
+
 		}
+
+		if (isJumping)
+		{
+			if (isGrounded)
+			{
+				if (walkingButton)
+				{
+					animator.SetBool(isWalkingHash, true);
+					animator.SetBool(isJumpingHash, false);
+				}
+				else
+				{
+
+					animator.SetBool(isWalkingHash, false);
+					animator.SetBool(isJumpingHash, false);
+
+				}
+			}
+
+			if (distancePerSecondSinceLastFrame < 0 && transform.position.y < 0)
+			{
+				animator.SetBool(isFallingHash, true);
+			}
+
+		}
+
+		if (isGrounded)
+		{
+			animator.SetBool(isFallingHash, false);
+		}
+
 	}
 }
