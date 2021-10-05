@@ -28,7 +28,7 @@ public class AnimationScript : MonoBehaviour
 		bool isJumping = animator.GetBool(isJumpingHash);
 		bool isfalling = animator.GetBool(isFallingHash);
 		float distancePerSecondSinceLastFrame = (transform.position.y - lastY) * Time.deltaTime;
-		lastY = transform.position.y;  //set for next frame
+		lastY = transform.position.y;
 
 		if (walkingButton && !isJumping)
 		{
@@ -45,7 +45,7 @@ public class AnimationScript : MonoBehaviour
 		if (isWalking)
 		{
 
-			if (distancePerSecondSinceLastFrame < 0 && transform.position.y < 0)
+			if (distancePerSecondSinceLastFrame < 0 && transform.position.y < -7)
 			{
 				animator.SetBool(isFallingHash, true);
 			}
@@ -79,7 +79,7 @@ public class AnimationScript : MonoBehaviour
 				}
 			}
 
-			if (distancePerSecondSinceLastFrame < 0 && transform.position.y < 0)
+			if (distancePerSecondSinceLastFrame < 0 && transform.position.y < -7)
 			{
 				animator.SetBool(isFallingHash, true);
 			}
