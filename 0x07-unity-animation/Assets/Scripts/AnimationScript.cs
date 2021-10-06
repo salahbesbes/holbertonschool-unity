@@ -36,7 +36,6 @@ public class AnimationScript : MonoBehaviour
 			animator.SetBool(isJumpingHash, false);
 		}
 
-
 		if (jumpingButton)
 		{
 			animator.SetBool(isWalkingHash, false);
@@ -44,8 +43,7 @@ public class AnimationScript : MonoBehaviour
 		}
 		if (isWalking)
 		{
-
-			if (distancePerSecondSinceLastFrame < 0 && transform.position.y < 0)
+			if (distancePerSecondSinceLastFrame < 0 && transform.position.y < -7)
 			{
 				animator.SetBool(isFallingHash, true);
 			}
@@ -57,8 +55,6 @@ public class AnimationScript : MonoBehaviour
 				animator.SetBool(isWalkingHash, false);
 				animator.SetBool(isJumpingHash, false);
 			}
-
-
 		}
 
 		if (isJumping)
@@ -72,24 +68,20 @@ public class AnimationScript : MonoBehaviour
 				}
 				else
 				{
-
 					animator.SetBool(isWalkingHash, false);
 					animator.SetBool(isJumpingHash, false);
-
 				}
 			}
 
-			if (distancePerSecondSinceLastFrame < 0 && transform.position.y < 0)
+			if (distancePerSecondSinceLastFrame < 0 && transform.position.y < -7)
 			{
 				animator.SetBool(isFallingHash, true);
 			}
-
 		}
 
 		if (isGrounded)
 		{
 			animator.SetBool(isFallingHash, false);
 		}
-
 	}
 }
