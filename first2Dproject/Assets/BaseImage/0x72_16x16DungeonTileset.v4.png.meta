@@ -34,13 +34,13 @@ TextureImporter:
     second: wall_1_12
   - first:
       213: 2734835179166247975
-    second: pil_0_0
+    second: pilller_wall_0_0
   - first:
       213: 440307803353817776
-    second: pil_0_1
+    second: pilller_wall_0_1
   - first:
       213: -6143772700222676345
-    second: pil_0_2
+    second: pilller_wall_0_2
   - first:
       213: -7588191219272095646
     second: torche_5
@@ -68,6 +68,15 @@ TextureImporter:
   - first:
       213: -3163861510159893632
     second: torche_0
+  - first:
+      213: -6813459960075662660
+    second: piller_2
+  - first:
+      213: -4356875786548134849
+    second: chest_0
+  - first:
+      213: 4332630308760004205
+    second: chest_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -925,7 +934,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pil_0_0
+      name: pilller_wall_0_0
       rect:
         serializedVersion: 2
         x: 96
@@ -946,7 +955,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pil_0_1
+      name: pilller_wall_0_1
       rect:
         serializedVersion: 2
         x: 96
@@ -967,7 +976,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pil_0_2
+      name: pilller_wall_0_2
       rect:
         serializedVersion: 2
         x: 96
@@ -1172,6 +1181,69 @@ TextureImporter:
       bones: []
       spriteID: 08b736828b4b714d0800000000000000
       internalID: -3163861510159893632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: piller_2
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 32
+        width: 16
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbac75cf34ab171a0800000000000000
+      internalID: -6813459960075662660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chest_0
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 47
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3c3c4c4e844983c0800000000000000
+      internalID: -4356875786548134849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chest_1
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 31
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d662bb08f48902c30800000000000000
+      internalID: 4332630308760004205
       vertices: []
       indices: 
       edges: []
