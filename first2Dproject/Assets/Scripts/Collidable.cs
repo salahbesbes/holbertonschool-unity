@@ -1,29 +1,29 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Collidable : MonoBehaviour
 {
 
 
-	public ContactFilter2D filter;
+	public ContactFilter2D filter = new ContactFilter2D();
 	private BoxCollider2D boxCollider;
-	private Collider2D[] hits = new Collider2D[10];
+	private List<Collider2D> hits = new List<Collider2D>();
+
+
 
 	protected virtual void Start()
 	{
 		boxCollider = GetComponent<BoxCollider2D>();
+		hits.Add(boxCollider);
 	}
 
 	protected virtual void Update()
 	{
-		boxCollider.OverlapCollider(filter, hits);
-
-		for (int i = 0; i < hits.Length; i++)
+		int res = boxCollider.OverlapCollider(filter, hits);
+		Debug.Log($"{res}");
+		for (int i = 0; i < res; i++)
 		{
-			if (hits[i] != null)
-			{
-				OnCollide(hits[i]);
-				hits[i] = null;
-			}
+			OnCollide(hits[i]);
 		}
 	}
 
