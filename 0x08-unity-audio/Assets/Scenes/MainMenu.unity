@@ -506,6 +506,7 @@ GameObject:
   - component: {fileID: 66611091}
   - component: {fileID: 66611089}
   - component: {fileID: 66611092}
+  - component: {fileID: 66611093}
   m_Layer: 0
   m_Name: MenuSFX
   m_TagString: Untagged
@@ -733,7 +734,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -815,6 +816,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &66611093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 66611088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e44f3cc62710ca4cb3430070ac4626f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &253114761 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3717574027750775115, guid: e4990440693542e418056a1f104fb9f4, type: 3}
@@ -2162,7 +2175,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3717574027750775115, guid: e4990440693542e418056a1f104fb9f4, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3717574027750775115, guid: e4990440693542e418056a1f104fb9f4, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2263,7 +2276,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5543800812920315949, guid: 8455f8a23a3e8164ebcc3b21890ca253, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5543800812920315949, guid: 8455f8a23a3e8164ebcc3b21890ca253, type: 3}
       propertyPath: m_AnchorMax.x

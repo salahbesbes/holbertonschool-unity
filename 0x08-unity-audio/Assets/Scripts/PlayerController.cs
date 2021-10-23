@@ -4,6 +4,8 @@ public class PlayerController : MonoBehaviour
 {
 	public CharacterController charCon;
 	public Canvas pauseCanvas;
+	public Animator animator;
+
 
 	public float speed = 6f;
 	public float maxJumpHeight = 10f;
@@ -16,6 +18,9 @@ public class PlayerController : MonoBehaviour
 	private Vector3 gravityVelocity = Vector3.zero;
 
 	//public float jumpVelocity = 0.5f;
+
+
+
 
 	private void Start()
 	{
