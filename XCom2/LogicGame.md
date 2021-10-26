@@ -36,3 +36,19 @@ First Step
 
 
 Second Step
+
+----------------  player Movement range -------------------
+1) if the player have 8 as rangeMovment it can move for exemple until 8 tiles to the left not more ( it wont move )
+2) if he moves for 4 tile or less he can remove again 4 tiles.
+3) each move cost 1 action point
+
+4) later we will have some obstacle that the player cant click on but he will jump over them
+5) the player controles  multiple charachters and can only select 1 charachter at a time 
+6) the charracter can trigger multiple action (even if the action take time ), then excecute them one by one
+
+--------------------------------- player Class -----------------
+4) the player have some action that he can do: each action have a cost (1 or 2) if the action point of the player reach 0 his turn ends
+
+
+
+
