@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
-  <Tracking>
-    <ImageTarget name="holberton" size="1.000000 0.998267" />
-    <ImageTarget name="QRCodeHolberTonImage" size="6.000000 7.764706" />
-  </Tracking>
-</QCARConfig>
