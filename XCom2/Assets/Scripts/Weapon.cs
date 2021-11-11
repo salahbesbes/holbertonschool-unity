@@ -12,7 +12,7 @@ public class Weapon : MonoBehaviour
 	public int bulletLeft;
 	public int bulletsShot;
 	public int maxMagazine = 100;
-	public float bulletRange = 50f;
+	public float bulletRange = 5;
 
 	[Range(0, 0.5f)]
 	public float spread = 1f;
@@ -25,42 +25,45 @@ public class Weapon : MonoBehaviour
 	public Transform startPoint;
 	private NodeGrid grid;
 	public Camera fps_Cam;
-	public Player player;
+	public UnitAction player;
 
 	public void Start()
 	{
 		bulletLeft = maxMagazine;
 		grid = FindObjectOfType<NodeGrid>();
+		Vector3 fwd = transform.TransformDirection(Vector3.forward);
+		Debug.DrawRay(startPoint.position, fwd, Color.green);
 	}
 
 	public void Update()
 	{
-		//CheckForInput();
+		Vector3 fwd = transform.TransformDirection(Vector3.forward);
+		Debug.DrawRay(startPoint.position, fwd * bulletRange, Color.green);
 	}
 
 	public void CheckForInput()
 	{
-		//if (holdDownShooting) shooting = Input.GetMouseButton(1);
-		//else shooting = Input.GetMouseButtonDown(1);
-		if (holdDownShooting) shooting = Input.GetKey(KeyCode.R);
-		else shooting = Input.GetKeyDown(KeyCode.R);
-		//Debug.Log($"{shooting} {readyToShoot} {!reloading} {bulletLeft > 0}");
-		if (shooting && readyToShoot && !reloading && bulletLeft > 0)
-		{
-			StartCoroutine(startShooting());
-		}
-		if (Input.GetKeyDown(KeyCode.R))
-			reloading = true;
-		if (reloading && !shooting && bulletLeft == maxMagazine) Reload();
+		////if (holdDownShooting) shooting = Input.GetMouseButton(1);
+		////else shooting = Input.GetMouseButtonDown(1);
+		//if (holdDownShooting) shooting = Input.GetKey(KeyCode.R);
+		//else shooting = Input.GetKeyDown(KeyCode.R);
+		////Debug.Log($"{shooting} {readyToShoot} {!reloading} {bulletLeft > 0}");
+		//if (shooting && readyToShoot && !reloading && bulletLeft > 0)
+		//{
+		//	StartCoroutine(startShooting());
+		//}
+		//if (Input.GetKeyDown(KeyCode.R))
+		//	reloading = true;
+		//if (reloading && !shooting && bulletLeft == maxMagazine) Reload();
 	}
 
-	public IEnumerator Reload()
+	public IEnumerator Reload(ReloadAction reload)
 	{
 		yield return new WaitForSeconds(2f);
 		bulletLeft = maxMagazine;
 		reloading = false;
 		Debug.Log($"finish reloading");
-		player.FinishAction();
+		player.FinishAction(reload);
 	}
 
 	public void Shoot(RaycastHit hit)
@@ -99,18 +102,22 @@ public class Weapon : MonoBehaviour
 		bulletsShot++;
 	}
 
-	public IEnumerator startShooting()
+	public IEnumerator startShooting(ShootAction shoot)
 	{
 		// need to read documentation on the ViewportPointToRay method Vector3(0.5f, 0.5f,
 		// 0) the ray is at the center of the camera view. The bottom-left of the camera is
 		// (0,0); the top-right is (1,1).
+
 		if (readyToShoot && !reloading && bulletLeft > 0)
 		{
-			Ray ray = fps_Cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+			//if (Physics.Raycast(transform.position, fwd, out objectHit, 50))
+			//{ }
+			//Ray ray = fps_Cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+			Vector3 fwd = transform.TransformDirection(Vector3.forward);
+			Debug.DrawRay(startPoint.position, fwd * bulletRange, Color.green);
 			RaycastHit hit;
-			if (Physics.Raycast(ray, out hit))
+			if (Physics.Raycast(startPoint.position, fwd, out hit, bulletRange))
 			{
-				//Debug.Log($"hit {hit}");
 				if (shutGun)
 				{
 					for (int i = 0; i < bulletInOneShot; i++)
@@ -125,7 +132,7 @@ public class Weapon : MonoBehaviour
 					//todo: Replace this system by the cost Action point
 					float halfMagazine = maxMagazine / 2;
 					// fire until ( not required )
-					while (bulletLeft >= halfMagazine || bulletsShot <= halfMagazine)
+					while (bulletLeft >= halfMagazine)
 					{
 						Shoot(hit);
 						yield return new WaitForSeconds(timeBetweenShooting);
@@ -134,9 +141,13 @@ public class Weapon : MonoBehaviour
 				}
 			}
 			else
+			{
+				Debug.Log($" out of range!  bullet range is  {bulletRange} ");
 				print("I'm looking at nothing!");
+			}
 		}
-		player.FinishAction();
+		Debug.Log($"finish shotting");
+		player.FinishAction(shoot);
 	}
 
 	private IEnumerator DelayShooting()
@@ -149,16 +160,16 @@ public class Weapon : MonoBehaviour
 	{
 		if (grid != null)
 		{
-			Ray ray = fps_Cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-			RaycastHit hit;
-			Gizmos.color = Color.red;
-			if (Physics.Raycast(ray, out hit))
-			{
-				Node hitNode = grid.getNodeFromTransformPosition(null, hit.point);
-				Vector3 targetPoint = hitNode.coord;
+			//Ray ray = fps_Cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+			//RaycastHit hit;
+			//Gizmos.color = Color.red;
+			//if (Physics.Raycast(ray, out hit))
+			//{
+			//	Node hitNode = grid.getNodeFromTransformPosition(null, hit.point);
+			//	Vector3 targetPoint = hitNode.coord;
 
-				//Gizmos.DrawLine(player.actualPos.coord, targetPoint);
-			}
+			//	//Gizmos.DrawLine(player.actualPos.coord, targetPoint);
+			//}
 		}
 	}
 }
