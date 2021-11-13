@@ -1,7 +1,10 @@
+using gameEventNameSpace;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+	[SerializeField] private VoidEvent onCharacterJump;
+
 	public CharacterController charCon;
 
 	public float speed = 6f;
@@ -44,15 +47,16 @@ public class PlayerController : MonoBehaviour
 		// handle movement
 		Vector3 direction = transform.right * x + transform.forward * z;
 		charCon.Move(direction * speed * Time.deltaTime);
-
+		Debug.Log($"{Input.GetButtonDown("Jump")}  grounded {isGrounded}");
 		//handle jump
 		if (Input.GetButtonDown("Jump") && isGrounded)
 		{
+			onCharacterJump.Raise();
 			gravityVelocity.y = Mathf.Sqrt(maxJumpHeight * -3.0f * gravity);
 		}
-		////handle gravity
-		//gravityVelocity.y += gravity * Time.deltaTime;
-		//charCon.Move(gravityVelocity * Time.deltaTime);
+		//handle gravity
+		gravityVelocity.y += gravity * Time.deltaTime;
+		charCon.Move(gravityVelocity * Time.deltaTime);
 		//// note why this code work properly but does not work in OnTriggerEnter method
 		//if (transform.position.y < -30.0f)
 		//{
