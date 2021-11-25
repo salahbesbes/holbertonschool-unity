@@ -16,8 +16,15 @@ public class proceduralGeneration : MonoBehaviour
 
 	// prefab to instantiate
 	public GameObject objPrefab;
+	public GameObject doubleObstaclePrefab;
+	public GameObject singleObstaclePrefab;
 	public float heightPrefab = 10f;
+	public float doubleObstacleHeight = 1f;
+	public float singleObstacleHeight = 1f;
+	private int nbOfPersongGeneratedSinceLastObstacle = 0;
 
+	[Range(1, 9)]
+	public float frequenceOfObstacle;
 	public float DistanceKM = 0;
 
 	private void Start()
@@ -48,18 +55,46 @@ public class proceduralGeneration : MonoBehaviour
 		}
 	}
 
+	private void selectObstacleType(float XPosition, Vector3 updatedPos, GameObject lastPlane)
+	{
+		Vector3 offset;
+
+		// select tthe type of the obstacle based on the X position of the Vec3
+		switch (XPosition)
+		{
+			case -1:
+				// create obstacle
+				offset = new Vector3(0.5f, doubleObstacleHeight * 0.05f, 0);
+				Instantiate(doubleObstaclePrefab, updatedPos + offset, Quaternion.identity, lastPlane.transform);
+				break;
+
+			case 0:
+				// this create an obstacle ontop of the person to pick (at the same time)
+				//Instantiate(singleObstaclePrefab, updatedPos, Quaternion.identity, lastPlane.transform);
+				break;
+
+			case 1:
+				offset = new Vector3(-0.5f, doubleObstacleHeight * 0.05f, 0);
+				Instantiate(doubleObstaclePrefab, updatedPos + offset, Quaternion.identity, lastPlane.transform);
+				break;
+
+			default:
+				break;
+		}
+	}
+
 	private void randomGeneratePrefab(GameObject objPrefab, GameObject lastPlane)
 	{
 		// the frequence
 		if (lastPlane.transform.position.z % 4 == 0 && lastPlane.transform.position.z >= 30)
 		{
-			// scale the height of the prefab
-			objPrefab.transform.localScale = new Vector3(0.3f, heightPrefab, 0.3f);
+			//// scale the height of the prefab
+			objPrefab.transform.localScale = new Vector3(objPrefab.transform.localScale.x, heightPrefab, objPrefab.transform.localScale.z);
 
 			Vector3 updatedPos = lastPlane.transform.position;
 
 			// set the prefab on the Ground
-			updatedPos.y = (heightPrefab / 2) * 0.05f;
+			//updatedPos.y = (heightPrefab / 2) * 0.05f;
 
 			// create 3 position, in 3 ways
 			Vector3[] allPosition = new Vector3[] { updatedPos ,
@@ -67,8 +102,17 @@ public class proceduralGeneration : MonoBehaviour
 								updatedPos + Vector3.right };
 			// select random way
 			int randomIndex = Mathf.RoundToInt(Random.Range(0, allPosition.Length));
+
 			// init the prefab
-			Instantiate(objPrefab, allPosition[randomIndex], Quaternion.identity, lastPlane.transform);
+			GameObject person = Instantiate(objPrefab, allPosition[randomIndex], Quaternion.identity, lastPlane.transform);
+			// create an obstacle + the person at the same time at some frequence
+
+			nbOfPersongGeneratedSinceLastObstacle++;
+			if (nbOfPersongGeneratedSinceLastObstacle > frequenceOfObstacle)
+			{
+				nbOfPersongGeneratedSinceLastObstacle = 0;
+				selectObstacleType(allPosition[randomIndex].x, lastPlane.transform.position, lastPlane);
+			}
 		}
 	}
 }
