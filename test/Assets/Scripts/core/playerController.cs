@@ -3,7 +3,7 @@ using UnityEngine;
 public class playerController : MonoBehaviour
 {
 	private CharacterController controller;
-	public float speed = 5f;
+	public float speed = 1f;
 
 	public float distance;
 
@@ -11,7 +11,7 @@ public class playerController : MonoBehaviour
 	private bool fingerDown;
 
 	//public float movmentSpeed = 2f;
-	public int pixelsDistToDetect = 7;
+	public int pixelsDistToDetect = 2;
 
 	// Start is called before the first frame update
 	private void Start()

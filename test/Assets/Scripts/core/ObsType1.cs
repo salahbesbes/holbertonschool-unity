@@ -6,6 +6,6 @@ public class ObsType1 : MonoBehaviour
 
 	private void Update()
 	{
-		partToRotate.RotateAround(partToRotate.position, Vector3.up, Time.deltaTime * 200);
+		transform.RotateAround(partToRotate.position, Vector3.up, Time.deltaTime * 200);
 	}
 }

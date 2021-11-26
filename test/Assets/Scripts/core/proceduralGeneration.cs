@@ -16,16 +16,19 @@ public class proceduralGeneration : MonoBehaviour
 
 	// prefab to instantiate
 	public GameObject objPrefab;
-	public GameObject doubleObstaclePrefab;
-	public GameObject singleObstaclePrefab;
+	public GameObject leftObstacleType1;
+	public GameObject rightObstacleType1;
 	public float heightPrefab = 10f;
 	public float doubleObstacleHeight = 1f;
 	public float singleObstacleHeight = 1f;
 	private int nbOfPersongGeneratedSinceLastObstacle = 0;
 
+	private Vector3 instantiatePoint;
+
 	[Range(1, 9)]
 	public float frequenceOfObstacle;
 	public float DistanceKM = 0;
+	public GameObject singleObstaclePrefab;
 
 	private void Start()
 	{
@@ -36,6 +39,7 @@ public class proceduralGeneration : MonoBehaviour
 	// Update is called once per frame
 	private void Update()
 	{
+		DistanceKM = Mathf.Floor(player.position.z);
 		if (lastPos.z <= player.position.z + 30)
 		{
 			GameObject lastPlane = Instantiate(plane_model, lastPos + Vector3.forward, Quaternion.identity);
@@ -64,18 +68,25 @@ public class proceduralGeneration : MonoBehaviour
 		{
 			case -1:
 				// create obstacle
-				offset = new Vector3(0.5f, doubleObstacleHeight * 0.05f, 0);
-				Instantiate(doubleObstaclePrefab, updatedPos + offset, Quaternion.identity, lastPlane.transform);
+				offset = new Vector3(1f, doubleObstacleHeight * 0.05f, 0);
+				instantiatePoint = updatedPos + offset;
+
+				Instantiate(rightObstacleType1, updatedPos + offset, rightObstacleType1.transform.rotation, lastPlane.transform);
 				break;
 
 			case 0:
-				// this create an obstacle ontop of the person to pick (at the same time)
-				//Instantiate(singleObstaclePrefab, updatedPos, Quaternion.identity, lastPlane.transform);
+				//this create an obstacle ontop of the person to pick(at the same time)
+				offset = new Vector3(0f, singleObstacleHeight * 0.05f, 0);
+
+				instantiatePoint = updatedPos + offset;
+
+				Instantiate(singleObstaclePrefab, updatedPos + offset, singleObstaclePrefab.transform.rotation, lastPlane.transform);
 				break;
 
 			case 1:
-				offset = new Vector3(-0.5f, doubleObstacleHeight * 0.05f, 0);
-				Instantiate(doubleObstaclePrefab, updatedPos + offset, Quaternion.identity, lastPlane.transform);
+				offset = new Vector3(-1f, doubleObstacleHeight * 0.05f, 0);
+				instantiatePoint = updatedPos + offset;
+				Instantiate(leftObstacleType1, updatedPos + offset, leftObstacleType1.transform.rotation, lastPlane.transform);
 				break;
 
 			default:
@@ -103,8 +114,6 @@ public class proceduralGeneration : MonoBehaviour
 			// select random way
 			int randomIndex = Mathf.RoundToInt(Random.Range(0, allPosition.Length));
 
-			// init the prefab
-			GameObject person = Instantiate(objPrefab, allPosition[randomIndex], Quaternion.identity, lastPlane.transform);
 			// create an obstacle + the person at the same time at some frequence
 
 			nbOfPersongGeneratedSinceLastObstacle++;
@@ -113,6 +122,16 @@ public class proceduralGeneration : MonoBehaviour
 				nbOfPersongGeneratedSinceLastObstacle = 0;
 				selectObstacleType(allPosition[randomIndex].x, lastPlane.transform.position, lastPlane);
 			}
+			else
+			{
+				// init the prefab
+				GameObject person = Instantiate(objPrefab, allPosition[randomIndex], Quaternion.identity, lastPlane.transform);
+			}
 		}
+	}
+
+	private void OnDrawGizmos()
+	{
+		Gizmos.DrawSphere(instantiatePoint, 0.1f);
 	}
 }
