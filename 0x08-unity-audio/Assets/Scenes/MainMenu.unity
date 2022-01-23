@@ -1511,14 +1511,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 580807066}
     m_Modifications:
     - target: {fileID: 5543800812920315936, guid: 8455f8a23a3e8164ebcc3b21890ca253, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5543800812920315936, guid: 8455f8a23a3e8164ebcc3b21890ca253, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5543800812920315936, guid: 8455f8a23a3e8164ebcc3b21890ca253, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 282400215}
@@ -1526,22 +1518,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1469834835}
-    - target: {fileID: 5543800812920315936, guid: 8455f8a23a3e8164ebcc3b21890ca253, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5543800812920315936, guid: 8455f8a23a3e8164ebcc3b21890ca253, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: Options
-      objectReference: {fileID: 0}
-    - target: {fileID: 5543800812920315936, guid: 8455f8a23a3e8164ebcc3b21890ca253, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: MainMenu, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 5543800812920315936, guid: 8455f8a23a3e8164ebcc3b21890ca253, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 5543800812920315946, guid: 8455f8a23a3e8164ebcc3b21890ca253, type: 3}
       propertyPath: m_Name
       value: OptionsButtons
