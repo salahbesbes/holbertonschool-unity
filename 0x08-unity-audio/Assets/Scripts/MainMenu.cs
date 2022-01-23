@@ -3,12 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-	public AudioSource hoverSound;
-	public AudioSource clickSound;
 
 	public void LevelSelect(int level)
 	{
-		clickSound.Play();
 		switch (level)
 		{
 			case 1:
@@ -30,20 +27,16 @@ public class MainMenu : MonoBehaviour
 
 	public void Options()
 	{
-		clickSound.Play();
 		SceneManager.LoadScene("Options");
 	}
 
 	public void Exit()
 	{
-
-		clickSound.Play();
 		Application.Quit();
 	}
 
 	public void HoverButton()
 	{
-		hoverSound.Play();
 
 	}
 }
