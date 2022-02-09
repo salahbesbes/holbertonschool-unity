@@ -16,14 +16,14 @@ public class RunningState : StateMachineBehaviour
 				if (renderer.material.name.Contains("Wood"))
 				{
 					AudioManager manager = FindObjectOfType<AudioManager>();
-					manager.Play("WoodSound");
+					//manager.Play("WoodSound");
 					//Debug.Log($"{"WoodSound"}");
 				}
 				else if (renderer.material.name.Contains("Stone"))
 				{
 					AudioManager manager = FindObjectOfType<AudioManager>();
 
-					manager.Play("StoneSound");
+					//manager.Play("StoneSound");
 					//Debug.Log($"StoneSound");
 				}
 
@@ -42,8 +42,8 @@ public class RunningState : StateMachineBehaviour
 	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 	{
 		AudioManager manager = FindObjectOfType<AudioManager>();
-		manager.Stop("WoodSound");
-		manager.Stop("StoneSound");
+		//manager.Stop("WoodSound");
+		//manager.Stop("StoneSound");
 	}
 
 

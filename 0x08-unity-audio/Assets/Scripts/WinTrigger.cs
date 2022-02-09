@@ -26,6 +26,9 @@ public class WinTrigger : MonoBehaviour
 		winText.text = textConter.text;
 		winText.transform.parent.gameObject.SetActive(true);
 
+		AudioManager.Instance.Stop("cheeryMonday");
+		AudioManager.Instance.Play("victoryPiano");
+
 
 	}
 }

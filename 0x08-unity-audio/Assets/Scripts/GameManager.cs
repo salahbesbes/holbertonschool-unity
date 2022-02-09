@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 	public bool IsInverted { get; set; } = false;
 	public string[] AvailableScene { get; set; } = new string[] { "Level01", "Level02", "Level03", "MainMenu" };
 
-
+	public string previousScene = "Level01";
 	void Awake()
 	{
 		// only a single instance of this class lives in the game

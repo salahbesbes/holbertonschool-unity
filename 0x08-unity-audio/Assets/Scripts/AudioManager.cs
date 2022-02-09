@@ -5,17 +5,17 @@ using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
-	public static AudioManager instance;
+	public static AudioManager Instance;
 
 	public List<Sound> sounds = new List<Sound>();
 
 
 	void Awake()
 	{
-		if (instance == null)
+		if (Instance == null)
 		{
-			instance = this;
-			DontDestroyOnLoad(this.gameObject);
+			Instance = this;
+			//DontDestroyOnLoad(this.gameObject);
 		}
 		else
 		{
@@ -33,13 +33,14 @@ public class AudioManager : MonoBehaviour
 			s.source.volume = s.volume;
 			s.source.playOnAwake = s.playOnAwake;
 			s.source.outputAudioMixerGroup = s.audioMixer;
-
+			if (s.playOnAwake == true) Play(s.name);
 		}
-		Play("wallpaper");
+
+
 	}
 	public void Play(string soundName)
 	{
-		Sound sound = sounds.Single(el => el.name == soundName);
+		Sound sound = sounds.SingleOrDefault(el => el.name == soundName);
 		if (sound != null)
 		{
 			sound.source.Play();
@@ -49,7 +50,7 @@ public class AudioManager : MonoBehaviour
 
 	public void Stop(string soundName)
 	{
-		Sound sound = sounds.Single(el => el.name == soundName);
+		Sound sound = sounds.SingleOrDefault(el => el.name == soundName);
 		if (sound != null)
 		{
 			sound.source.Stop();
@@ -57,20 +58,23 @@ public class AudioManager : MonoBehaviour
 
 
 	}
-	[System.Serializable]
-	public class Sound
-	{
-		public string name;
-		public AudioSource source;
-		public AudioClip clip;
-		[Range(0, 1)]
-		public float volume = 1;
-		[Range(0, 1)]
-		public float pitch = 1;
-		public bool loop = false;
-		public bool playOnAwake = true;
-		public AudioMixerGroup audioMixer;
 
-
-	}
 }
+
+[System.Serializable]
+public class Sound
+{
+	public string name;
+	[Range(0, 1)]
+	public float volume = 1;
+	[Range(0, 1)]
+	public float pitch = 1;
+	public bool loop = false;
+	public bool playOnAwake = true;
+	public AudioSource source;
+	public AudioClip clip;
+	public AudioMixerGroup audioMixer;
+
+
+}
+

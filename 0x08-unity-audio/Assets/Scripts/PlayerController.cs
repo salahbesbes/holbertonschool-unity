@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
 		{
 			// get the pause menu
 			PauseMenu pauseMenu = pauseCanvas.GetComponent<PauseMenu>();
-
+			//AudioManager.Instance.Stop("cheeryMonday");
 			// check if he pause canvas is active and enabled if not
 			if (pauseCanvas.isActiveAndEnabled == false)
 			{

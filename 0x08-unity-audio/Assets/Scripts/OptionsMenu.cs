@@ -1,10 +1,12 @@
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class OptionsMenu : MonoBehaviour
 {
 	private bool _inverted = false;
+	public AudioMixer soundVol;
 
 	// this script is attached to the canvas
 	private void Start()
@@ -33,12 +35,22 @@ public class OptionsMenu : MonoBehaviour
 
 	public void Back()
 	{
-		SceneManager.LoadScene("MainMenu");
+		SceneManager.LoadScene("Level01");
 	}
 
 	public void Apply()
 	{
 		// update the game manager of the change of bool value
 		GameManager.Instance.IsInverted = _inverted;
+		Back();
+	}
+
+	public void BGMParams(float sliderValue)
+	{
+		soundVol.SetFloat("BGMVolume", Mathf.Log10(sliderValue) * 20);
+		float val;
+
+		soundVol.GetFloat("BGMVolume", out val);
+		Debug.Log($"{val}");
 	}
 }

@@ -10,6 +10,8 @@ public class TimerTrigger : MonoBehaviour
 			Timer timer = other.GetComponent<Timer>();
 			timer.enabled = true;
 			timer.StartTimer();
+
+
 		}
 	}
 }
