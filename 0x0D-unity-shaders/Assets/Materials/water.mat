@@ -57,10 +57,10 @@ Material:
     - _ZTest: 4
     - _ZWrite: 0
     - _ZWriteControl: 0
-    - _depth: 0.57
-    - _normal_strength: 0.85
-    - _smoothness: 1
-    - _strength: 0.36
+    - _depth: 0.85
+    - _normal_strength: 1
+    - _smoothness: 0.665
+    - _strength: 0.2
     m_Colors:
     - _deap_water_color: {r: 0.08904416, g: 0.73522997, b: 0.8207547, a: 0.40392157}
     - _shallow_water_color: {r: 0.13906196, g: 0.14088814, b: 0.23584908, a: 0.7607843}
