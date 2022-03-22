@@ -14,6 +14,7 @@ public class AnimationScript : MonoBehaviour
 		isJumpingHash = Animator.StringToHash("isJumping");
 		isFallingHash = Animator.StringToHash("isFalling");
 		charCon = GetComponent<CharacterController>();
+
 		lastY = transform.position.y;
 	}
 

@@ -1,18 +1,16 @@
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 public class Audio : MonoBehaviour
 {
-	public List<Sound> sounds = new List<Sound>();
+	private GameManager settings;
 
 	// Start is called before the first frame update
-	void Awake()
+	private void Awake()
 	{
-
-		foreach (Sound s in sounds)
+		settings = GameManager.Instance;
+		foreach (Sound s in settings.playerSounds)
 		{
-
 			s.source = gameObject.AddComponent<AudioSource>();
 			s.source.clip = s.clip;
 			s.source.pitch = s.pitch;
@@ -20,16 +18,15 @@ public class Audio : MonoBehaviour
 			s.source.volume = s.volume;
 			s.source.playOnAwake = s.playOnAwake;
 			s.source.outputAudioMixerGroup = s.audioMixer;
-
 		}
 	}
 
 	/*
 	 * this methode is used in the Animation event System
 	 */
+
 	public void playSound(string soundName)
 	{
-
 		if (soundName == "running")
 		{
 			if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit))
@@ -39,7 +36,7 @@ public class Audio : MonoBehaviour
 				{
 					if (hit.collider.CompareTag("grass") || renderer.material.name.Contains("Wood"))
 					{
-						Sound sound = sounds.SingleOrDefault(el => el.name == "runningOnGrass");
+						Sound sound = settings.playerSounds.SingleOrDefault(el => el.name == "runningOnGrass");
 						if (sound != null)
 						{
 							sound.source.Play();
@@ -47,14 +44,12 @@ public class Audio : MonoBehaviour
 					}
 					else if (hit.collider.CompareTag("rock") || renderer.material.name.Contains("Stone"))
 					{
-						Sound sound = sounds.SingleOrDefault(el => el.name == "runningOnRock");
+						Sound sound = settings.playerSounds.SingleOrDefault(el => el.name == "runningOnRock");
 						if (sound != null)
 						{
 							sound.source.Play();
 						}
-
 					}
-
 				}
 			}
 		}
@@ -67,7 +62,7 @@ public class Audio : MonoBehaviour
 				{
 					if (hit.collider.CompareTag("grass") || renderer.material.name.Contains("Wood"))
 					{
-						Sound sound = sounds.SingleOrDefault(el => el.name == "landingOnGrass");
+						Sound sound = settings.playerSounds.SingleOrDefault(el => el.name == "landingOnGrass");
 						if (sound != null)
 						{
 							sound.source.Play();
@@ -75,20 +70,18 @@ public class Audio : MonoBehaviour
 					}
 					else if (hit.collider.CompareTag("rock") || renderer.material.name.Contains("Stone"))
 					{
-						Sound sound = sounds.SingleOrDefault(el => el.name == "landingOnRock");
+						Sound sound = settings.playerSounds.SingleOrDefault(el => el.name == "landingOnRock");
 						if (sound != null)
 						{
 							sound.source.Play();
 						}
-
 					}
-
 				}
 			}
 		}
 		else
 		{
-			Sound sound = sounds.SingleOrDefault(el => el.name == soundName);
+			Sound sound = settings.playerSounds.SingleOrDefault(el => el.name == soundName);
 			if (sound != null)
 			{
 				sound.source.Play();
@@ -98,17 +91,14 @@ public class Audio : MonoBehaviour
 		}
 	}
 
-
 	public void Stop(string soundName)
 	{
-		Sound sound = sounds.SingleOrDefault(el => el.name == soundName);
+		Sound sound = settings.playerSounds.SingleOrDefault(el => el.name == soundName);
 		if (sound != null)
 		{
 			sound.source.Stop();
 		}
 		else
 			Debug.Log($"can't Stop Sound with Name  {soundName}");
-
-
 	}
 }

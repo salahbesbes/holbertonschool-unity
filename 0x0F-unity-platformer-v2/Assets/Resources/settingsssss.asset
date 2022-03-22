@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: settingsssss
+  m_EditorClassIdentifier: Assembly-CSharp::SC_Settings
+  pause: {fileID: 3495018079236179603, guid: 404d3274523a407498a920ff060c40da, type: 2}
+  play: {fileID: 617846264349458463, guid: 404d3274523a407498a920ff060c40da, type: 2}
+  mainAudioMixer: {fileID: 24100000, guid: 404d3274523a407498a920ff060c40da, type: 2}
+  playerSounds:
+  - name: runningOnGrass
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 83c1e6bd6d081c64587680d18d5f90c7, type: 3}
+    audioMixer: {fileID: 6354612912778126804, guid: 404d3274523a407498a920ff060c40da, type: 2}
+  - name: runningOnRock
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: c663d5cc9fa1b464a9372a2ecf2de22a, type: 3}
+    audioMixer: {fileID: 6354612912778126804, guid: 404d3274523a407498a920ff060c40da, type: 2}
+  - name: landingOnGrass
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 105a047102d14a7438af128460da090a, type: 3}
+    audioMixer: {fileID: 6354612912778126804, guid: 404d3274523a407498a920ff060c40da, type: 2}
+  - name: landingOnRock
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: c13256b8c4c85d745a79f27b60fd5f7f, type: 3}
+    audioMixer: {fileID: 6354612912778126804, guid: 404d3274523a407498a920ff060c40da, type: 2}
+  gameSounds:
+  - name: victoryPiano
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 97c53198e8f78824ba11791618d727cd, type: 3}
+    audioMixer: {fileID: -9161205063956694824, guid: 404d3274523a407498a920ff060c40da, type: 2}
+  - name: cheeryMonday
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 1fcff45b49500b343845b889ce98648e, type: 3}
+    audioMixer: {fileID: -9161205063956694824, guid: 404d3274523a407498a920ff060c40da, type: 2}
+  SFX:
+  - name: victoryPiano
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 97c53198e8f78824ba11791618d727cd, type: 3}
+    audioMixer: {fileID: 5177534439978942565, guid: 404d3274523a407498a920ff060c40da, type: 2}
+  MasterVolume: -3.8482249
+  SFXVolume: -0.004258156

@@ -1,2 +1,3 @@
-# character controller ( player Movement )
-Skyboxes: Farland Skies - Cloudy Crown
+assets used:
+* Skyboxes: Farland Skies - Cloudy Crown
+* Models: Kenney's Nature Pack Extended

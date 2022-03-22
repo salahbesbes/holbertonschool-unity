@@ -6,7 +6,6 @@ public class PlayerController : MonoBehaviour
 	public Canvas pauseCanvas;
 	public Animator animator;
 
-
 	public float speed = 6f;
 	public float maxJumpHeight = 10f;
 	private bool isGrounded = true;
@@ -19,14 +18,12 @@ public class PlayerController : MonoBehaviour
 
 	//public float jumpVelocity = 0.5f;
 
-
-
-
 	private void Start()
 	{
 		// make sure the time scale when the player is rendred is 1
 		Time.timeScale = 1;
 		charCon = GetComponent<CharacterController>();
+		animator = GetComponent<Animator>();
 		startPosition = transform.position;
 	}
 

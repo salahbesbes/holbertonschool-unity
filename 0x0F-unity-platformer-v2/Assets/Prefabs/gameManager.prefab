@@ -1,0 +1,98 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4748498524099853207
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4748498524099853205}
+  - component: {fileID: 4748498524099853204}
+  m_Layer: 0
+  m_Name: gameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4748498524099853205
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4748498524099853207}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4748498524099853204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4748498524099853207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c1422270e30e9c40a4458c4a7c30e63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  previousScene: Level01
+  pause: {fileID: 3495018079236179603, guid: 404d3274523a407498a920ff060c40da, type: 2}
+  play: {fileID: 617846264349458463, guid: 404d3274523a407498a920ff060c40da, type: 2}
+  mainAudioMixer: {fileID: 24100000, guid: 404d3274523a407498a920ff060c40da, type: 2}
+  playerSounds:
+  - name: runningOnGrass
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 83c1e6bd6d081c64587680d18d5f90c7, type: 3}
+    audioMixer: {fileID: 6354612912778126804, guid: 404d3274523a407498a920ff060c40da, type: 2}
+  - name: runningOnRock
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: c663d5cc9fa1b464a9372a2ecf2de22a, type: 3}
+    audioMixer: {fileID: 6354612912778126804, guid: 404d3274523a407498a920ff060c40da, type: 2}
+  - name: landingOnGrass
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 105a047102d14a7438af128460da090a, type: 3}
+    audioMixer: {fileID: 7861365319912148029, guid: 404d3274523a407498a920ff060c40da, type: 2}
+  - name: landingOnRock
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: c13256b8c4c85d745a79f27b60fd5f7f, type: 3}
+    audioMixer: {fileID: 7861365319912148029, guid: 404d3274523a407498a920ff060c40da, type: 2}
+  gameSounds:
+  - name: victoryPiano
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 97c53198e8f78824ba11791618d727cd, type: 3}
+    audioMixer: {fileID: -9161205063956694824, guid: 404d3274523a407498a920ff060c40da, type: 2}
+  SFX: []
+  MasterVolume: 0
+  SFXVolume: 0
+  playerInputString: 
+  sc: {fileID: 11400000, guid: 344ee80240dfca344b0b37f962f2b2f2, type: 2}
+  playerInput: {fileID: -944628639613478452, guid: 70c0bc0319cfcde4d9983f3ed0c1ecb2, type: 3}
